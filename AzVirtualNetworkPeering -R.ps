@@ -1,0 +1,16 @@
+$vmsArray=Get-AzVirtualNetworkPeering -ResourceGroupName rg-network -VirtualNetworkName vnet-firewall | Select-Object Name, RemoteVirtualNetwork
+
+foreach ($vm in $vmsArray) {
+              $subsres=$vm.RemoteVirtualNetwork.Id.trim().Split('/')[2]
+                        $subsname=Get-AzureRmSubscription -SubscriptionId $subsres          $Rmvnetname=$vm.RemoteVirtualNetwork.Id.trim().Split('/')[8]
+                                  Write-Host $Rmvnetname " " $subsname.Name
+}
+        
+        foreach ($routel in $routes) {
+              $subsres=$routel.Name
+                $addr=$routel.AddressPrefix
+                  Write-Host $subsres " " $addr
+        }
+        
+        }
+}
